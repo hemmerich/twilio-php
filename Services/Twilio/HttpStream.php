@@ -55,6 +55,10 @@ class Services_Twilio_HttpStream {
         $request_options['http']['method'] = strtoupper($name);
         $request_options['http']['ignore_errors'] = true;
 
+        $request_options['ssl']['verify_peer'] = false;
+        $request_options['ssl']['verify_peer_name'] = false;
+        $request_options['ssl']['CN_match'] = '*.twilio.com';
+
         if ($this->debug) {
             error_log(var_export($request_options, true));
         }
